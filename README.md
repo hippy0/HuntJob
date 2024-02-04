@@ -26,6 +26,9 @@ Open up the project folder in your terminal and run the commands mentioned below
 make build
 make run
 ```
+
+If you are using docker container to start app you should toss port via `-p` param.
+More info on https://docs.docker.com/engine/reference/commandline/container_port/.
 ## Properties
 
 You can customize the application as you wish using the application.yml file.
