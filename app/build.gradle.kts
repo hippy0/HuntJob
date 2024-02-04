@@ -1,12 +1,13 @@
 plugins {
     java
     application
+    checkstyle
     id("org.springframework.boot") version "3.2.2"
     id("io.spring.dependency-management") version "1.1.4"
 }
 
 group = "dev.hippy"
-version = "1.0.0-RELEASE"
+version = "1.0.1-RELEASE"
 
 repositories {
     mavenLocal()

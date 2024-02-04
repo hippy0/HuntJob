@@ -77,7 +77,8 @@ public class CompanyControllerTest {
         companyStatusRepository.save(testCompanyStatus);
         companyRepository.save(testCompany);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/api/companies/{id}", testCompany.getId());
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/api/companies/{id}",
+            testCompany.getId());
 
         MvcResult result = mockMvc.perform(request)
             .andExpect(status().isOk())
@@ -111,7 +112,8 @@ public class CompanyControllerTest {
 
         assertThat(company).isPresent();
         assertThat(company.get().getName()).isEqualTo(testCompany.getName());
-        assertThat(company.get().getCompanyStatus().getName()).isEqualTo(testCompany.getCompanyStatus().getName());
+        assertThat(company.get().getCompanyStatus().getName()).isEqualTo(
+            testCompany.getCompanyStatus().getName());
     }
 
     @Test
@@ -123,7 +125,8 @@ public class CompanyControllerTest {
 
         updateDTO.setName("updatedName");
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put("/api/companies/{id}", testCompany.getId())
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put("/api/companies/{id}",
+                testCompany.getId())
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(updateDTO));
 
@@ -140,7 +143,8 @@ public class CompanyControllerTest {
         companyStatusRepository.save(testCompanyStatus);
         companyRepository.save(testCompany);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete("/api/companies/{id}", testCompany.getId());
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete("/api/companies/{id}",
+            testCompany.getId());
 
         mockMvc.perform(request)
             .andExpect(status().isNotFound());

@@ -7,4 +7,7 @@ run:
 test:
 	./gradlew test
 
+lint:
+	./gradlew checkstyleMain
+
 .PHONY: build

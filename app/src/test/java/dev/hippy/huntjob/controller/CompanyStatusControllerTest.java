@@ -5,13 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.hippy.huntjob.dto.CompanyCreateDTO;
 import dev.hippy.huntjob.dto.CompanyStatusCreateDTO;
 import dev.hippy.huntjob.dto.CompanyStatusUpdateDTO;
-import dev.hippy.huntjob.dto.CompanyUpdateDTO;
-import dev.hippy.huntjob.model.Company;
 import dev.hippy.huntjob.model.CompanyStatus;
-import dev.hippy.huntjob.repository.CompanyRepository;
 import dev.hippy.huntjob.repository.CompanyStatusRepository;
 import dev.hippy.huntjob.util.ModelGenerator;
 import java.nio.charset.StandardCharsets;
@@ -70,7 +66,8 @@ public class CompanyStatusControllerTest {
     public void testShow() throws Exception {
         companyStatusRepository.save(testCompanyStatus);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/api/company_statuses/{id}", testCompanyStatus.getId());
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get(
+            "/api/company_statuses/{id}", testCompanyStatus.getId());
 
         MvcResult result = mockMvc.perform(request)
             .andExpect(status().isOk())
@@ -96,7 +93,8 @@ public class CompanyStatusControllerTest {
         mockMvc.perform(request)
             .andExpect(status().isCreated());
 
-        Optional<CompanyStatus> companyStatus = companyStatusRepository.findByName(testCompanyStatus.getName());
+        Optional<CompanyStatus> companyStatus = companyStatusRepository.findByName(
+            testCompanyStatus.getName());
 
         assertThat(companyStatus).isPresent();
         assertThat(companyStatus.get().getName()).isEqualTo(testCompanyStatus.getName());
@@ -110,7 +108,8 @@ public class CompanyStatusControllerTest {
 
         updateDTO.setName("updatedName");
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put("/api/company_statuses/{id}", testCompanyStatus.getId())
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put(
+                "/api/company_statuses/{id}", testCompanyStatus.getId())
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(updateDTO));
 
@@ -126,12 +125,14 @@ public class CompanyStatusControllerTest {
     public void testDestroy() throws Exception {
         companyStatusRepository.save(testCompanyStatus);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete("/api/company_statuses/{id}", testCompanyStatus.getId());
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete(
+            "/api/company_statuses/{id}", testCompanyStatus.getId());
 
         mockMvc.perform(request)
             .andExpect(status().isNotFound());
 
-        Optional<CompanyStatus> companyStatus = companyStatusRepository.findByName(testCompanyStatus.getName());
+        Optional<CompanyStatus> companyStatus = companyStatusRepository.findByName(
+            testCompanyStatus.getName());
 
         assertThat(companyStatus).isNotPresent();
     }
