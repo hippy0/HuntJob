@@ -25,12 +25,12 @@ public class ModelGenerator {
         companyModel = Instancio.of(Company.class)
             .ignore(Select.field(Company::getId))
             .ignore(Select.field(Company::getCompanyStatus))
-            .supply(Select.field(Company::getName), () -> faker.company().name())
+            .supply(Select.field(Company::getName), () -> faker.gameOfThrones().city())
             .toModel();
 
         companyStatusModel = Instancio.of(CompanyStatus.class)
             .ignore(Select.field(CompanyStatus::getId))
-            .supply(Select.field(CompanyStatus::getName), () -> faker.job().position())
+            .supply(Select.field(CompanyStatus::getName), () -> faker.gameOfThrones().character())
             .toModel();
     }
 
