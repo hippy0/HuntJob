@@ -27,8 +27,10 @@ make build
 make run
 ```
 
-If you are using docker container to start app you should toss port via `-p` param.
-More info on https://docs.docker.com/engine/reference/commandline/container_port/.
+If you are using docker container to start app you should bind port with `-p` option.
+**For example:** `docker run -p 7070:7070`
+
+More info: https://docs.docker.com/engine/reference/commandline/container_run/#publish.
 ## Properties
 
 You can customize the application as you wish using the application.yml file.
