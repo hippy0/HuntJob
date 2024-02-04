@@ -4,6 +4,7 @@ import dev.hippy.huntjob.dto.CompanyCreateDTO;
 import dev.hippy.huntjob.dto.CompanyDTO;
 import dev.hippy.huntjob.dto.CompanyUpdateDTO;
 import dev.hippy.huntjob.service.CompanyService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/companies")
+@Tag(name = "Company controller", description = "Manage companies whose jobs you have responded")
 public class CompanyController {
 
     @Autowired
