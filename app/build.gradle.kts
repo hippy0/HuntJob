@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.hippy"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-RELEASE"
 
 repositories {
     mavenLocal()
