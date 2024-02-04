@@ -26,6 +26,26 @@ Open up the project folder in your terminal and run the commands mentioned below
 make build
 make run
 ```
+# Properties
+
+You can customize the application as you wish using the application.yml file.
+
+```
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: "jdbc:h2:mem:huntjob"
+``` 
+
+Spring uses an opinionated algorithm to scan for and configure a DataSource. Initially, the project uses an h2 database, the data in which is stored in memory and deleted after the application is stopped. You can use any database using this property. To do this, you need to add a runtime dependency with the driver.
+
+```
+server:
+  address: 0.0.0.0
+  port: 7070
+```
+
+The project initially runs on localhost with port 7070. You can configure this property as you wish.
 
 # Api Documentation
 
