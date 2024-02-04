@@ -22,6 +22,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    implementation("org.instancio:instancio-junit:3.3.1")
+    implementation("net.datafaker:datafaker:2.0.2")
 
     compileOnly("org.projectlombok:lombok")
 
@@ -31,6 +33,9 @@ dependencies {
     annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
+    testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.2.2")
 }
 
 application {
