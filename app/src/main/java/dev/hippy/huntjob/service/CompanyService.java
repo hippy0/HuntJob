@@ -37,7 +37,6 @@ public class CompanyService {
     public CompanyDTO create(CompanyCreateDTO createDTO) {
         Company company = companyMapper.map(createDTO);
 
-        System.out.println(createDTO + " | " + company);
         companyRepository.save(company);
 
         return companyMapper.map(company);

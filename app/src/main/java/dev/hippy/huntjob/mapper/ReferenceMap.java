@@ -1,6 +1,6 @@
 package dev.hippy.huntjob.mapper;
 
-import dev.hippy.huntjob.model.impl.BaseEntity;
+import dev.hippy.huntjob.model.BaseEntity;
 import jakarta.persistence.EntityManager;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants.ComponentModel;

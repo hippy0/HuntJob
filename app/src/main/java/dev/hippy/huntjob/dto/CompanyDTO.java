@@ -12,4 +12,5 @@ public class CompanyDTO {
     private String name;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+    private String status;
 }
