@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.hippy.huntjob.dto.CompanyCreateDTO;
+import dev.hippy.huntjob.dto.CompanyUpdateDTO;
 import dev.hippy.huntjob.model.Company;
 import dev.hippy.huntjob.model.CompanyStatus;
 import dev.hippy.huntjob.repository.CompanyRepository;
@@ -111,5 +112,41 @@ public class CompanyControllerTest {
         assertThat(company).isPresent();
         assertThat(company.get().getName()).isEqualTo(testCompany.getName());
         assertThat(company.get().getCompanyStatus().getName()).isEqualTo(testCompany.getCompanyStatus().getName());
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        companyStatusRepository.save(testCompanyStatus);
+        companyRepository.save(testCompany);
+
+        CompanyUpdateDTO updateDTO = new CompanyUpdateDTO();
+
+        updateDTO.setName("updatedName");
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put("/api/companies/{id}", testCompany.getId())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(updateDTO));
+
+        mockMvc.perform(request)
+            .andExpect(status().isOk());
+
+        Optional<Company> company = companyRepository.findByName("updatedName");
+
+        assertThat(company).isPresent();
+    }
+
+    @Test
+    public void testDestroy() throws Exception {
+        companyStatusRepository.save(testCompanyStatus);
+        companyRepository.save(testCompany);
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete("/api/companies/{id}", testCompany.getId());
+
+        mockMvc.perform(request)
+            .andExpect(status().isNotFound());
+
+        Optional<Company> company = companyRepository.findByName(testCompany.getName());
+
+        assertThat(company).isNotPresent();
     }
 }
