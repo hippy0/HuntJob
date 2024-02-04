@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java CI](https://github.com/hippy0/HuntJob/actions/workflows/java-ci.yml/badge.svg)](https://github.com/hippy0/HuntJob/actions/workflows/java-ci.yml)
 
-HuntJob is a application that helps keep a record of all the companies whose jobs you have responded to and track the status of respond.
+HuntJob is an application that helps keep a record of all the companies whose jobs you have responded to and track the status of respond.
 
 ## Codebase
 
@@ -42,7 +42,7 @@ spring:
     url: "jdbc:h2:mem:huntjob"
 ``` 
 
-Spring uses an opinionated algorithm to scan for and configure a DataSource. Initially, the project uses an h2 database, the data in which is stored in memory and deleted after the application is stopped. You can use any database using this property. To do this, you need to add a runtime dependency with the driver.
+Spring uses an opinionated algorithm to scan for and configure a DataSource. Initially, the project uses a h2 database, the data in which is stored in memory and deleted after the application is stopped. You can use any database using this property. To do this, you need to add a runtime dependency with the driver.
 
 ```
 server:
