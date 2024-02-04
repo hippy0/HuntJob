@@ -2,14 +2,19 @@ package dev.hippy.huntjob.service;
 
 import dev.hippy.huntjob.dto.CompanyCreateDTO;
 import dev.hippy.huntjob.dto.CompanyDTO;
+import dev.hippy.huntjob.dto.CompanyParamsDTO;
 import dev.hippy.huntjob.dto.CompanyUpdateDTO;
 import dev.hippy.huntjob.exception.ResourceNotFoundException;
 import dev.hippy.huntjob.mapper.CompanyMapper;
 import dev.hippy.huntjob.model.Company;
 import dev.hippy.huntjob.repository.CompanyRepository;
-import java.util.List;
+import dev.hippy.huntjob.specification.CompanySpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class CompanyService {
@@ -20,11 +25,15 @@ public class CompanyService {
     @Autowired
     private CompanyMapper companyMapper;
 
-    public List<CompanyDTO> getAll() {
-        return companyRepository.findAll()
-            .stream()
-            .map(companyMapper::map)
-            .toList();
+    @Autowired
+    private CompanySpecification specificationBuilder;
+
+    public Page<CompanyDTO> getAll(CompanyParamsDTO params, int page) {
+        Specification<Company> specification = specificationBuilder.build(params);
+
+        Page<Company> companyPage = companyRepository.findAll(specification, PageRequest.of(page - 1, 10));
+
+        return companyPage.map(companyMapper::map);
     }
 
     public CompanyDTO findById(Long id) {

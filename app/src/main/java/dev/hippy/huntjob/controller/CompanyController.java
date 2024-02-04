@@ -2,11 +2,14 @@ package dev.hippy.huntjob.controller;
 
 import dev.hippy.huntjob.dto.CompanyCreateDTO;
 import dev.hippy.huntjob.dto.CompanyDTO;
+import dev.hippy.huntjob.dto.CompanyParamsDTO;
 import dev.hippy.huntjob.dto.CompanyUpdateDTO;
+import dev.hippy.huntjob.model.Company;
 import dev.hippy.huntjob.service.CompanyService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,12 +32,12 @@ public class CompanyController {
     private CompanyService service;
 
     @GetMapping("")
-    private ResponseEntity<List<CompanyDTO>> index() {
-        List<CompanyDTO> companyDTOList = service.getAll();
+    private ResponseEntity<List<CompanyDTO>> index(CompanyParamsDTO params, @RequestParam(defaultValue = "1") int page) {
+        Page<CompanyDTO> companyDTOPage = service.getAll(params, page);
 
         return ResponseEntity.ok()
-            .header("X-Total-Count", String.valueOf(companyDTOList.size()))
-            .body(companyDTOList);
+            .header("X-Total-Count", String.valueOf(companyDTOPage.getNumberOfElements()))
+            .body(companyDTOPage.get().toList());
     }
 
     @GetMapping("/{id}")
