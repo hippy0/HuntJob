@@ -26,6 +26,13 @@ Open up the project folder in your terminal and run the commands mentioned below
 make build
 make run
 ```
+
+# Api Documentation
+
+You can find api documentation that generates automatically when application runs at:
+
+`http://{your-address}:{your-port}/swagger-ui/index.html` **for example:** `http://localhost:7070/swagger-ui/index.html`
+
 # License
 
 HuntJob is distributed under an Apache 2.0 license.
