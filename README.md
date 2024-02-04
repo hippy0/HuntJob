@@ -5,11 +5,11 @@
 
 HuntJob is a application that helps keep a record of all the companies whose jobs you have responded to and track the status of respond.
 
-# Codebase
+## Codebase
 
 The codebase is Spring Framework and h2 memory database. Quite a simple setup.
 
-# Setup
+## Setup
 
 You'll need:
   <ul>
@@ -26,7 +26,7 @@ Open up the project folder in your terminal and run the commands mentioned below
 make build
 make run
 ```
-# Properties
+## Properties
 
 You can customize the application as you wish using the application.yml file.
 
@@ -47,12 +47,12 @@ server:
 
 The project initially runs on localhost with port 7070. You can configure this property as you wish.
 
-# Api Documentation
+## Api Documentation
 
 You can find api documentation that generates automatically when application runs at:
 
 `http://{your-address}:{your-port}/swagger-ui/index.html` **for example:** `http://localhost:7070/swagger-ui/index.html`
 
-# License
+## License
 
 HuntJob is distributed under an Apache 2.0 license.
