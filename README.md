@@ -27,7 +27,7 @@ make build
 make run
 ```
 
-If you are using docker container to start app you should bind port with `-p` option.
+You also can use docker for run application isolated, if you are - you should bind port with `-p` option.
 **For example:** `docker run -p 7070:7070`
 
 More info: https://docs.docker.com/engine/reference/commandline/container_run/#publish.
