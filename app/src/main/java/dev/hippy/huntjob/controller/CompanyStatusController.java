@@ -50,7 +50,8 @@ public class CompanyStatusController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private CompanyStatusDTO update(@PathVariable Long id, @RequestBody CompanyStatusUpdateDTO updateDTO) {
+    private CompanyStatusDTO update(@PathVariable Long id,
+        @RequestBody CompanyStatusUpdateDTO updateDTO) {
         return service.update(id, updateDTO);
     }
 

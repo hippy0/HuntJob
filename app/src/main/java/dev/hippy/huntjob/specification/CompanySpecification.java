@@ -30,10 +30,12 @@ public class CompanySpecification {
     }
 
     private Specification<Company> withCreatedAtGt(LocalDate date) {
-        return (root, query, cb) -> date == null ? cb.conjunction() : cb.greaterThan(root.get("createdAt"), date);
+        return (root, query, cb) -> date == null ? cb.conjunction()
+            : cb.greaterThan(root.get("createdAt"), date);
     }
 
     private Specification<Company> withCreatedAtLt(LocalDate date) {
-        return (root, query, cb) -> date == null ? cb.conjunction() : cb.lessThan(root.get("createdAt"), date);
+        return (root, query, cb) -> date == null ? cb.conjunction()
+            : cb.lessThan(root.get("createdAt"), date);
     }
 }

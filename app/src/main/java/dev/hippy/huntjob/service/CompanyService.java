@@ -30,7 +30,8 @@ public class CompanyService {
     public Page<CompanyDTO> getAll(CompanyParamsDTO params, int page) {
         Specification<Company> specification = specificationBuilder.build(params);
 
-        Page<Company> companyPage = companyRepository.findAll(specification, PageRequest.of(page - 1, 10));
+        Page<Company> companyPage = companyRepository.findAll(specification,
+            PageRequest.of(page - 1, 10));
 
         return companyPage.map(companyMapper::map);
     }
