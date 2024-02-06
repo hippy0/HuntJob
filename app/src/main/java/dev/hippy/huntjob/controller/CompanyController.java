@@ -4,7 +4,6 @@ import dev.hippy.huntjob.dto.CompanyCreateDTO;
 import dev.hippy.huntjob.dto.CompanyDTO;
 import dev.hippy.huntjob.dto.CompanyParamsDTO;
 import dev.hippy.huntjob.dto.CompanyUpdateDTO;
-import dev.hippy.huntjob.model.Company;
 import dev.hippy.huntjob.service.CompanyService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
@@ -32,7 +31,8 @@ public class CompanyController {
     private CompanyService service;
 
     @GetMapping("")
-    private ResponseEntity<List<CompanyDTO>> index(CompanyParamsDTO params, @RequestParam(defaultValue = "1") int page) {
+    private ResponseEntity<List<CompanyDTO>> index(CompanyParamsDTO params,
+        @RequestParam(defaultValue = "1") int page) {
         Page<CompanyDTO> companyDTOPage = service.getAll(params, page);
 
         return ResponseEntity.ok()
