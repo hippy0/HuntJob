@@ -2,9 +2,10 @@ package dev.hippy.huntjob.specification;
 
 import dev.hippy.huntjob.dto.CompanyParamsDTO;
 import dev.hippy.huntjob.model.Company;
-import java.time.LocalDate;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class CompanySpecification {

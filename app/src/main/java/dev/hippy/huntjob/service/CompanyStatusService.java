@@ -7,12 +7,12 @@ import dev.hippy.huntjob.exception.ResourceNotFoundException;
 import dev.hippy.huntjob.mapper.CompanyStatusMapper;
 import dev.hippy.huntjob.model.CompanyStatus;
 import dev.hippy.huntjob.repository.CompanyStatusRepository;
-import java.util.List;
-
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)

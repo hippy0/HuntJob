@@ -5,8 +5,6 @@ import dev.hippy.huntjob.dto.CompanyStatusDTO;
 import dev.hippy.huntjob.dto.CompanyStatusUpdateDTO;
 import dev.hippy.huntjob.service.CompanyStatusService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.List;
-
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/company_statuses")

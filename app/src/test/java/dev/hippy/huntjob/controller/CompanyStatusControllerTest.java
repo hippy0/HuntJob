@@ -1,17 +1,11 @@
 package dev.hippy.huntjob.controller;
 
-import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.hippy.huntjob.dto.CompanyStatusCreateDTO;
 import dev.hippy.huntjob.dto.CompanyStatusUpdateDTO;
 import dev.hippy.huntjob.model.CompanyStatus;
 import dev.hippy.huntjob.repository.CompanyStatusRepository;
 import dev.hippy.huntjob.util.ModelGenerator;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +17,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+
+import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc

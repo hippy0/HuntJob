@@ -6,8 +6,6 @@ import dev.hippy.huntjob.dto.CompanyParamsDTO;
 import dev.hippy.huntjob.dto.CompanyUpdateDTO;
 import dev.hippy.huntjob.service.CompanyService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.List;
-
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.HandlerMapping;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/companies")
@@ -37,7 +35,8 @@ public class CompanyController {
     CompanyService service;
 
     @GetMapping("")
-    private ResponseEntity<List<CompanyDTO>> index(CompanyParamsDTO params, @RequestParam(defaultValue = "1") int page) {
+    private ResponseEntity<List<CompanyDTO>> index(CompanyParamsDTO params,
+                                                   @RequestParam(defaultValue = "1") int page) {
         Page<CompanyDTO> companyDTOPage = service.getAll(params, page);
 
         return ResponseEntity.ok()
