@@ -1,15 +1,19 @@
 package dev.hippy.huntjob.dto;
 
 import java.time.LocalDate;
+
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CompanyParamsDTO {
 
-    private String nameContains;
-    private LocalDate createdAtGt;
-    private LocalDate createdAtLt;
-    private String status;
+    String nameContains;
+    LocalDate createdAtGt;
+    LocalDate createdAtLt;
+    String status;
 }

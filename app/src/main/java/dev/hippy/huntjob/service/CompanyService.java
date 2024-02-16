@@ -9,6 +9,8 @@ import dev.hippy.huntjob.mapper.CompanyMapper;
 import dev.hippy.huntjob.model.Company;
 import dev.hippy.huntjob.repository.CompanyRepository;
 import dev.hippy.huntjob.specification.CompanySpecification;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,16 +18,17 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CompanyService {
 
     @Autowired
-    private CompanyRepository companyRepository;
+    CompanyRepository companyRepository;
 
     @Autowired
-    private CompanyMapper companyMapper;
+    CompanyMapper companyMapper;
 
     @Autowired
-    private CompanySpecification specificationBuilder;
+    CompanySpecification specificationBuilder;
 
     public Page<CompanyDTO> getAll(CompanyParamsDTO params, int page) {
         Specification<Company> specification = specificationBuilder.build(params);

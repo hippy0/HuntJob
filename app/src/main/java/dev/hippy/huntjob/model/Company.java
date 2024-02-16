@@ -1,18 +1,14 @@
 package dev.hippy.huntjob.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
+
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -22,23 +18,24 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @NotBlank
     @Column(unique = true)
-    private String name;
+    String name;
 
     @OneToOne
     @JoinColumn(name = "companyStatusId")
-    private CompanyStatus companyStatus;
+    CompanyStatus companyStatus;
 
     @CreatedDate
-    private LocalDate createdAt;
+    LocalDate createdAt;
 
     @LastModifiedDate
-    private LocalDate updatedAt;
+    LocalDate updatedAt;
 }

@@ -3,7 +3,10 @@ package dev.hippy.huntjob.component;
 import dev.hippy.huntjob.dto.CompanyStatusCreateDTO;
 import dev.hippy.huntjob.service.CompanyStatusService;
 import java.util.List;
+
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,10 +14,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class DataInitializer implements ApplicationRunner {
 
     @Autowired
-    private CompanyStatusService companyStatusService;
+    CompanyStatusService companyStatusService;
 
     @Override
     public void run(ApplicationArguments args) {

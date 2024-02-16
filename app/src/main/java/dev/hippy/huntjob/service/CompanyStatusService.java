@@ -8,17 +8,21 @@ import dev.hippy.huntjob.mapper.CompanyStatusMapper;
 import dev.hippy.huntjob.model.CompanyStatus;
 import dev.hippy.huntjob.repository.CompanyStatusRepository;
 import java.util.List;
+
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CompanyStatusService {
 
     @Autowired
-    private CompanyStatusRepository companyStatusRepository;
+    CompanyStatusRepository companyStatusRepository;
 
     @Autowired
-    private CompanyStatusMapper companyStatusMapper;
+    CompanyStatusMapper companyStatusMapper;
 
     public List<CompanyStatusDTO> getAll() {
         return companyStatusRepository.findAll()
